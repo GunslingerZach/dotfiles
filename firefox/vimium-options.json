@@ -1,0 +1,42 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\n\nmap q removeTab\nmap K previousTab\nmap  J nextTab",
+  "settingsVersion": "2.0.6",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "f",
+      "pattern": "https?://www.youtube.com/*"
+    },
+    {
+      "passKeys": "*",
+      "pattern": "https?://www.mathway.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.mathway.com/*"
+    },
+    {
+      "passKeys": "f",
+      "pattern": "https?://vid.puffyan.us/*"
+    },
+    {
+      "passKeys": "f",
+      "pattern": "https?://odysee.com/*"
+    },
+    {
+      "passKeys": "d",
+      "pattern": "https?://dimden.dev/*"
+    },
+    {
+      "passKeys": "s",
+      "pattern": "https?://dimden.dev/*"
+    },
+    {
+      "passKeys": "f",
+      "pattern": "https?://kick.com/*"
+    }
+  ]
+}
