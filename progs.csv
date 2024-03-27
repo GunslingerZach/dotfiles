@@ -71,3 +71,4 @@ A,rofi-lbonn-wayland,"is a window switcher, run dialog and dmenu replacement - f
 ,waybar,"is a highly customizable Wayland bar for Sway and Wlroots based compositors"
 A,hyprland-git,"A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 A,xremap-wlroots-bin,"is a Dynamic key remapper for X11 and Wayland"
+,pqiv,"Powerful image viewer with minimal UI"
