@@ -21,7 +21,7 @@ this is a work in progress fork of larbs for my own private use. Despite this, t
 until I get this finished, the process is a little harder that how luke smith did it
 
 ```
-git clone [github url]
+git clone [https://github.com/GunslingerZach/dotfiles]
 cp voidrice
 sh larbs.sh
 ```
