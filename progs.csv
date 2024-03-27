@@ -69,6 +69,10 @@ A,mutt-wizard-git,"is a light-weight terminal-based email system."
 ,foot,"is a fast, lightweight, and minimalistic Wayland terminal emulator"
 A,rofi-lbonn-wayland,"is a window switcher, run dialog and dmenu replacement - fork with wayland support"
 ,waybar,"is a highly customizable Wayland bar for Sway and Wlroots based compositors"
+,hyprcursor,"is the hyprland cursor format, library and utilities
 A,hyprland-git,"A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
-A,xremap-wlroots-bin,"is a Dynamic key remapper for X11 and Wayland"
+A,xremap-hypr-bin,"is a Dynamic key remapper for X11 and Wayland"
+,swaybg,"Wallpaper tool for Wayland compositors"
 ,pqiv,"Powerful image viewer with minimal UI"
+A,pfetch,"A pretty system information tool written in POSIX sh."
+A,all-repository-fonts,"Meta package for all fonts in the official repositories." # this is like bringing a sword to cut a pizza
