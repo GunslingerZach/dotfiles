@@ -1,7 +1,5 @@
-# The Voidrice (Luke Smith <https://lukesmith.xyz>'s dotfiles)
-
-These are the dotfiles deployed by [LARBS](https://larbs.xyz) and as seen on
-[my YouTube channel](https://youtube.com/c/lukesmithxyz).
+# Dotfiles - fork of larbs
+this is a work in progress fork of larbs for my own private use. Despite this, there is nothing stopping you from taking part or all of my dotfiles.
 
 - Very useful scripts are in `~/.local/bin/`
 - Settings for:
@@ -18,31 +16,15 @@ These are the dotfiles deployed by [LARBS](https://larbs.xyz) and as seen on
 	- File bookmarks in `~/.config/shell/bm-files`
 	- Directory bookmarks in `~/.config/shell/bm-dirs`
 
-## Usage
-
-These dotfiles are intended to go with numerous suckless programs I use:
-
-- [dwm](https://github.com/lukesmithxyz/dwm) (window manager)
-- [dwmblocks](https://github.com/lukesmithxyz/dwmblocks) (statusbar)
-- [st](https://github.com/lukesmithxyz/st) (terminal emulator)
-
-I also recommend trying out
-[mutt-wizard](https://github.com/lukesmithxyz/mutt-wizard), which additionally
-works with this setup. It gives you an easy-to-install terminal-based email
-client regardless of your email provider. It is integrated into these dotfiles
-as well.
-
 ## Install these dotfiles and all dependencies
 
-Use [LARBS](https://larbs.xyz) to autoinstall everything:
+until I get this finished, the process is a little harder that how luke smith did it
 
 ```
-curl -LO larbs.xyz/larbs.sh
+git clone [github url]
+cp voidrice
+sh larbs.sh
 ```
 
 or clone the repo files directly to your home directory and install the
 [dependencies](https://github.com/LukeSmithxyz/LARBS/blob/master/static/progs.csv).
-
-## Default Desktop Artwork
-
-Thomas Thiemeyer's *The Road to Samarkand* ([fb](https://www.facebook.com/t.thiemeyer/), [insta](https://www.instagram.com/tthiemeyer/), [shop](https://www.redbubble.com/de/people/TThiemeyer/shop))
