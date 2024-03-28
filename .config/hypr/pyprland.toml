@@ -1,0 +1,8 @@
+[pyprland]
+plugins = ["scratchpad"]
+
+[scratchpad]
+plugin_option = 42
+
+[plugin_name.plugin_option]
+suboption = "config value"
