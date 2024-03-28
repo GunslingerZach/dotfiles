@@ -22,7 +22,7 @@ until I get this finished, the process is a little harder that how luke smith di
 ```
 pacman -S git
 git clone https://github.com/GunslingerZach/dotfiles
-cp voidrice
+cp dotfiles
 sh larbs.sh
 ```
 
