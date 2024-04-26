@@ -2,12 +2,21 @@
 this is a work in progress fork of larbs for my own private use. Despite this, there is nothing stopping you from taking part or all of my dotfiles.
 
 - Very useful scripts are in `~/.local/bin/`
-- Settings for:
-	- vim/nvim (text editor)
-	- zsh (shell)
-	- mpd/ncmpcpp (music)
-	- mpv (video player)
-	- other stuff like xdg default programs, inputrc and more, etc.
+- Hyprland is the default tiling window manager
+	- with Luke Smith's dwm
+- waybar is the bar for hyprland
+- mpv is the video player
+- imv is the image viewer
+- zathura is the pdf veiwer
+- rofi is the application launcher
+- Foot is the default terminal
+	- with Luke Smith's fork of st
+plus these terminal based applications
+- newsboat is the rss reader
+- ncmpcpp is the music player
+- nmtui is the network manager
+- neovim is the text editor
+
 - I try to minimize what's directly in `~` so:
 	- All configs that can be in `~/.config/` are.
 	- Some environmental variables have been set in `~/.zprofile` to move configs into `~/.config/`
@@ -17,7 +26,7 @@ this is a work in progress fork of larbs for my own private use. Despite this, t
 
 ## Install these dotfiles and all dependencies
 
-until I get this finished, the process is a little harder that how luke smith did it
+until I get this finished, the process is a little harder that how Luke Smith did it
 
 ```
 pacman -S git
@@ -31,7 +40,7 @@ or clone the repo files directly to your home directory and install the
 
 ## post install
 
-no web browsers are installed so you will have to install one of your choice and customize it as you wish. An export of the configurations I use is present in the [firefox](firefox) directory
+no web browsers are installed so you will have to install one of your choice and customize it as you wish. Install your favorite brower and replace it with the keybind in Hyprland for firefox.
 
 ## hyprland plugins
 

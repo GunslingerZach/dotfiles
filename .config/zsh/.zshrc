@@ -1,6 +1,16 @@
 # Luke's config for the Zoomer Shell
 pfetch
-alias nb="newsboat"
+lsd --color=auto --group-directories-first
+cd() {
+  if [ -n "$1" ]; then
+#     builtin cd "$@" && ls -hN --color=auto --group-directories-first
+    builtin cd "$@" && lsd --color=auto --group-directories-first
+  else
+#     builtin cd ~ && ls -hN --color=auto --group-directories-first
+    builtin cd ~ && lsd --color=auto --group-directories-first
+  fi
+}
+export QT_QPA_PLATFORMTHEM=qt5ct
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -79,3 +89,5 @@ bindkey -M visual '^[[P' vi-delete
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+alias websync="rsync -rtvzP ~/documents/hugo/gunslingerzach/public/ [redacted]@gunslingerzach.xyz:/var/www/gunslingerzach/"
+alias nb="newsboat"

@@ -22,11 +22,8 @@ set scrolloff 10
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
-# set cleaner '~/.config/lf/cleaner'
-set previewer '~/.config/lf/preview'
-set sixel true
-# set cleaner ~/.config/lf/lf_kitty_clean
-
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
 set autoquit true
 
 # cmds/functions
@@ -38,7 +35,7 @@ cmd open ${{
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-		setsid -f imv 2>/dev/null | while read -r file; do
+		setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
 			[ -z "$file" ] && continue
 			lf -remote "send select \"$file\""
 			lf -remote "send toggle"
@@ -144,7 +141,7 @@ map C copyto
 map M moveto
 map <c-n> push :mkdir<space>""<left>
 map <c-r> reload
-map . set hidden!
+map <c-s> set hidden!
 map <enter> shell
 map x $$f
 map X !$f

@@ -70,9 +70,11 @@ A,rofi-lbonn-wayland,"is a window switcher, run dialog and dmenu replacement - f
 ,hyprcursor,"is the hyprland cursor format, library and utilities
 A,hyprland-git,"A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 ,swaybg,"Wallpaper tool for Wayland compositors"
-,pqiv,"Powerful image viewer with minimal UI"
+,imv,"Powerful image viewer with minimal UI"
 A,pfetch,"A pretty system information tool written in POSIX sh."
 ,cpio,"is a tool to copy files into or out of a cpio or tar archive" # this may be redundent but it also may make hyprland plugins work properly
 ,meson,"is a High productivity build system" # same as cpio. If there is still errors try installing ninja and then reporting to me
 ,ttf-jetbrains-mono-nerd,"is a Patched font JetBrains Mono from nerd fonts library - this is the emoji font for rofi power menu"
 ,xdg-desktop-portal-hyprland,"is a xdg-desktop-portal backend for hyprland"
+,lsd,"is a modern ls with a lot of pretty colors and awesome icons"
+A,wlogout,"is a logout menu for wayland"
