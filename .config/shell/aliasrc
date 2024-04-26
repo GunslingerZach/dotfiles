@@ -33,7 +33,7 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
+	ls="lsd --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
@@ -58,3 +58,18 @@ alias \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
 	weath="less -S ${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport" \
+# links the correct linux command to its equivilant command on dos/windows
+alias \
+	del="rm" \
+
+# various neovim configs
+alias \
+	nvchad="NVIM_APPNAME=nvim-nvchad nvim"
+# make learning the terminal easy by converting shortened commands into their full word.
+alias \
+	copy="cp" \
+	move="mv" \
+	find="grep" \
+	delete="rm" \
+	and="&" \
+	location="pwd" \
