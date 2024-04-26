@@ -24,6 +24,10 @@ plus these terminal based applications
 	- File bookmarks in `~/.config/shell/bm-files`
 	- Directory bookmarks in `~/.config/shell/bm-dirs`
 
+## supported distros
+
+Arch linux. If all goes according to plan, also parabola.
+
 ## Install these dotfiles and all dependencies
 
 until I get this finished, the process is a little harder that how Luke Smith did it
