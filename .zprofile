@@ -10,9 +10,9 @@ unsetopt PROMPT_SP 2>/dev/null
 
 # Default programs:
 export EDITOR="nvim"
-export TERMINAL="st"
-export TERMINAL_PROG="st"
-export BROWSER="librewolf"
+export TERMINAL="foot"
+export TERMINAL_PROG="foot"
+export BROWSER="icecat"
 
 # Change the default crypto/weather monitor sites.
 # export CRYPTOURL="rate.sx"
