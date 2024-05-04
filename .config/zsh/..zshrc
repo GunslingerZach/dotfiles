@@ -89,5 +89,5 @@ bindkey -M visual '^[[P' vi-delete
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-alias websync="rsync -rtvzP ~/documents/hugo/gunslingerzach/public/ [redacted]@gunslingerzach.xyz:/var/www/gunslingerzach/"
+alias websync="rsync -rtvzP ~/documents/hugo/gunslingerzach/public/ root@gunslingerzach.xyz:/var/www/gunslingerzach/"
 alias nb="newsboat"

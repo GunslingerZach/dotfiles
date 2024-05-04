@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
-
+# [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+alias vim="NVIM_APPNAME=nvim-nvchad nvim"
 # Use $XINITRC variable if file exists.
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
@@ -54,17 +54,24 @@ alias \
 	xq="xbps-query" \
 	z="zathura"
 
+# search arch pacages in the terminal
+alias \
+  pms="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'" \
+  pms-s="pacman -Ssq | fzf" \
+  pms-a="yay -Slaq | fzf -m --preview='yay -Si {}' --bind 'space:toggle-preview' --bind 'enter:execute(yay -S {})'"
+
+
 alias \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
 	weath="less -S ${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport" \
-# links the correct linux command to its equivilant command on dos/windows
 alias \
-	del="rm" \
+	 \
 
 # various neovim configs
 alias \
-	nvchad="NVIM_APPNAME=nvim-nvchad nvim"
+	nvchad="NVIM_APPNAME=nvim-nvchad nvim" \
+  goyo="nvim"
 # make learning the terminal easy by converting shortened commands into their full word.
 alias \
 	copy="cp" \
@@ -72,4 +79,4 @@ alias \
 	find="grep" \
 	delete="rm" \
 	and="&" \
-	location="pwd" \
+	location="pwd"
