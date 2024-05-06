@@ -1,13 +1,13 @@
 # Luke's config for the Zoomer Shell
 pfetch
-lsd --color=auto --group-directories-first
+ls --color=auto --group-directories-first
 cd() {
   if [ -n "$1" ]; then
 #     builtin cd "$@" && ls -hN --color=auto --group-directories-first
-    builtin cd "$@" && lsd --color=auto --group-directories-first
+    builtin cd "$@" && ls --color=auto --group-directories-first
   else
 #     builtin cd ~ && ls -hN --color=auto --group-directories-first
-    builtin cd ~ && lsd --color=auto --group-directories-first
+    builtin cd ~ && ls --color=auto --group-directories-first
   fi
 }
 export QT_QPA_PLATFORMTHEM=qt5ct

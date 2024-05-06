@@ -2,8 +2,8 @@
     "spacing": 4,
 		// try to keep it 4px across the config
 		"height":25,
-    "modules-left": ["hyprland/workspaces", "custom/icon", "wlr/taskbar"],
-    "modules-right": ["custom/weather", "custom/pacpackages", "bluetooth", "cpu", "memory", "disk", "battery", "network", "pulseaudio", "privacy", "temperature", "clock", "tray"],
+    "modules-left": ["hyprland/workspaces", "custom/icon",  "hyprland/window"],
+    "modules-right": ["custom/weather", "custom/pacpackages", "bluetooth", "cpu", "memory", "disk", "battery", "network", "pulseaudio", "privacy", "temperature", "clock", "custom/pacpackages", "custom/uptime", "tray"],
 
 		/*
 		MODULES
@@ -20,9 +20,9 @@
         "format": "] [🗓️ {:%a %b %d %Y] [🕛️ %r}]",
         "format-alt": "[{:%Y-%m-%d}]",
 	"interval": 1
-    },
+    },/*
            "wlr/taskbar": {
-                "format": "{icon} {name}",
+                "format": "",
                 "icon-size": 14,
                 "icon-theme": "Numix-Circle",
                 "tooltip-format": "{title}",
@@ -38,11 +38,11 @@
                      "Firefox Web Browser": "Firefox",
                      "Foot Server": "Terminal"
                 }
-           },
+           }, */
 
     "disk": {
 	      "interval":30,
-	      "format": "[💾 {percentage_free}% on {path}]"
+	      "format": "[📁{used}/{total} {percentage_used}% {free} available]"
     },
     "cpu": {
         "format": "[:{usage}%]",
@@ -87,7 +87,7 @@
     "exec": "~/.local/bin/statusbar/sb-news2",
     "format": "[{}]",
     "tooltip": true,
-    "interval": 1
+    "interval": 900
   },
   "custom/pacpackages": {
     "exec": "~/.local/bin/statusbar/sb-pacpackages",
@@ -95,6 +95,21 @@
     "tooltip": true,
     "interval": 900
   },
+    "custom/uptime": {
+    "exec": "~/.local/bin/upt",
+    "format": "[uptime: {}]",
+    "tooltip": true,
+    "interval": 60
+  },
+    "custom/kernel": {
+    "exec": "~/.local/bin/kernel",
+    "format": "[Linux {}]",
+    "tooltip": true,
+    "interval": 900
+  },
+
+
+
            "bluetooth": {
                 // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
                 "format": "<U+F294> {status}",

@@ -19,8 +19,8 @@
 @define-color bg @base00;
 
 * {
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 14px;
+  font-family: monospace;
+  font-size: 12px;
   border-radius: 0px;
   /* :[ */
   min-height: 0px;
@@ -36,10 +36,11 @@ window#waybar.empty {
     background-color: transparent;
 }
 #workspaces {
-  background-color: @bg;
+  background-color: transparent;
 }
 
 #workspaces button {
+  background-color: @bg;
   padding: 0 5px;
 	color: @text;
 }
@@ -71,7 +72,7 @@ window#waybar.empty {
 
 
 .modules-left {
-  background-color: transparent;
+  background-color: @bg;
   padding: 0px 0px 0px 0px;
 }
 
