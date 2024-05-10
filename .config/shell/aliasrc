@@ -33,7 +33,7 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="lsd --group-directories-first" \
+	ls="ls --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
