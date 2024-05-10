@@ -8,7 +8,7 @@ this is a work in progress fork of larbs for my own private use. Despite this, t
 - mpv is the video player
 - imv is the image viewer
 - zathura is the pdf veiwer
-- rofi is the application launcher
+- sway-launcher-desktop is the application launcher with rofi as an alternitive
 - Foot is the default terminal
 	- with Luke Smith's fork of st
 plus these terminal based applications
@@ -26,7 +26,7 @@ plus these terminal based applications
 
 ## supported distros
 
-Arch linux. If all goes according to plan, also parabola.
+Arch linux as well as parabola GNU/Linux-libre. Theoretically there is no reason why it cannot work on artix linux however it has not been tested yet. Tested on my gamming machine using an AMD gpu as well as a thinkpad x220 and a thinkpad t400 (running parabola) On parabola I was not able to get hyprland to display properly using the official package so I had to use the aur pacage hyprland-legacyrenderer.
 
 ## Install these dotfiles and all dependencies
 
@@ -45,6 +45,8 @@ or clone the repo files directly to your home directory and install the
 ## post install
 
 no web browsers are installed so you will have to install one of your choice and customize it as you wish. Install your favorite brower and replace it with the keybind in Hyprland for firefox.
+
+I do not ship "xdg-desktop-portal-hyprland" because one of its dependencies is geoclue. Geoclue is blacklisted by parabola's your-privacy. The hack I found was to install xdg-desktop-portal-hyprland and then run "pacman -Rdd geoclue" and then installing your-privacy.  
 
 ## hyprland plugins
 
@@ -65,5 +67,7 @@ cd ~/.local/src/
 git clone https://aur.archlinux.org/yay.git
 makepkg -si
 ```
+
+note that you cannot install yay as root so you have to install it as a user. Make sure that your user is in the sudoers file (/etc/sudoers)
 
 Hyprland headers will fail sometimes. This is because the aur package for hyprland doesn't install all of the nessisary packages. I have added some in the [progs.csv](progs.csv) file. If you are still getting an error then report it.
