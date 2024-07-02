@@ -2,7 +2,7 @@
     "spacing": 4,
 		// try to keep it 4px across the config
 		"height":25,
-    "modules-left": ["hyprland/workspaces", "custom/icon",  "hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "river/tags", "sway/workspaces", "sway/mode", "custom/icon",  "hyprland/window", "sway/window"],
     "modules-right": ["custom/weather", "custom/pacpackages", "bluetooth", "cpu", "memory", "disk", "battery", "network", "pulseaudio", "privacy", "temperature", "clock", "custom/pacpackages", "custom/uptime", "tray"],
 
 		/*
@@ -44,8 +44,11 @@
 	      "interval":30,
 	      "format": "[📁{used}/{total} {percentage_used}% {free} available]"
     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
     "cpu": {
-        "format": "[:{usage}%]",
+        "format": "[:{usage}% {load}]",
         "tooltip": false
     },
     "memory": {
