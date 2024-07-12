@@ -1,3 +1,7 @@
+# must be first so it instantly plays
+
+exec mpv --no-video ~/.local/startup/Linux-Mint.ogg
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -7,18 +11,36 @@
 # output eDP1 pos 1920 0 res 1600x900
 # font pango:monospace 0
 
-# no titlebar unless using the tabbed layout
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term foot
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | wmenu | xargs swaymsg exec --
+# set $menu foot sway-launcher-desktop
+
+# hide titlebars unless they are nessisary
 hide_edge_borders --i3 smart_no_gaps
 default_border pixel 4
 
 # keyboard config
-
 input "type:keyboard" xkb_options caps:swapescape
 input "type:keyboard" repeat_rate 75
 
+workspace 10 output HDMI-A-1
+
 # execute at startup/reload
+exec autotiling
 exec waybar
-exec mpv --no-video ~/.local/startup/Linux-Mint.ogg
 exec emacs -daemon
 exec pipewire
 exec foot --server
@@ -37,14 +59,19 @@ exec autotiling
 set $opacity 0.8
 for_window [app_id="org.pwmt.zathura"] opacity $opacity
 for_window [app_id="nemo"] opacity $opacity
+# for_window [app_id="firefox"] opacity $opacity
 
 # keybinds
 bindsym Mod4+f4 exec $term pulsemixer
 bindsym Mod4+Shift+f4 exec pavucontrol
-bindsym Mod4+BackSpace exec wlogout -p layer-shell
+# bindsym Mod4+BackSpace exec wlogout -p layer-shell
+bindsym Mod4+BackSpace exec sysact-sway
 bindsym print exec wayshot -s "$(slurp)"
 bindsym Mod4+Shift+print exec wayshot
 bindsym Mod4+Insert exec sh .local/bin/bookmarks
+
+# Kill focused window
+bindsym Mod4+q kill
 bindsym Mod4+w exec $BROWSER
 bindsym Mod4+Shift+w exec $BROWSER -p
 bindsym Mod4+Return exec foot
@@ -75,90 +102,20 @@ bindsym Mod4+Shift+b exec sh .local/bin/newbookmark
 bindsym Mod4+n exec emacsclient -c documents/vimwiki/index.md
 bindsym Mod4+m exec foot ncmpcpp
 bindsym Mod4+Shift+m exec emacs --eval="(mu4e)"
+# Resize window with control
+bindsym $mod+Control+$left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+$down resize grow height 10 px or 10 ppt
+bindsym $mod+Control+$up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+$right resize grow width 10 px or 10 ppt
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-# Your preferred terminal emulator
-set $term foot
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | wmenu | xargs swaymsg exec --
-# set $menu foot sway-launcher-desktop
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg ~/pictures/wallpappers/0123.jpg fill
+# change 'indicator' from default to something more obvious
+client.focused            #4c7899 #285577 #ffffff #ff0000 #285577
+# client.focused_inactive   #333333 #5f676a #ffffff #ff0000 #5f676a
+# client.focused_tab_title  #333333 #5f676a #ffffff
+# client.unfocused          #333333 #222222 #888888 #ff0000 #222222
+# client.urgent             #2f343a #900000 #ffffff #ff0000 #900000
 
-# Example configuration:
-#
-   output HDMI-A-1 resolution 1920x1080 position 0,0
-   output DP-3 resolution 1920x1080 position 1920,0
-   output DP-2 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-#    bindsym $mod+Return exec $term
-
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
-#    bindsym $mod+d exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    # bindsym $mod+Shift+c reload
-
-    # Exit sway (logs you out of your Wayland session)
-#    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
 # Moving around:
 #
     # Move your focus around
@@ -247,6 +204,66 @@ output * bg ~/pictures/wallpappers/0123.jpg fill
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+output * bg ~/pictures/wallpappers/0123.jpg fill
+
+# Example configuration:
+#
+   output HDMI-A-1 resolution 1920x1080 position 0,0
+   output DP-3 resolution 1920x1080 position 1920,0
+   output DP-2 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+
+
+    # Start your launcher
+#    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    # floating_modifier $mod normal
+
+    # Reload the configuration file
+    # bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+#    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+
 #
 # Resizing containers:
 #
@@ -255,10 +272,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    # bindsym $left resize shrink width 10px
+    # bindsym $down resize grow height 10px
+    # bindsym $up resize shrink height 10px
+    # bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -270,6 +287,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-#bindsym $mod+r mode "resize"
+bindsym Mod4+x mode "resize"
 
 include @sysconfdir@/sway/config.d/*

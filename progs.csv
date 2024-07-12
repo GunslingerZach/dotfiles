@@ -61,7 +61,6 @@ G,https://github.com/lukesmithxyz/dwm.git,"is the window manager."
 ,moreutils,"is a collection of useful unix tools."
 #GunslingerZach's addictions
 ,foot,"is a fast, lightweight, and minimalistic Wayland terminal emulator"
-A,rofi-lbonn-wayland-git,"is a window switcher, run dialog and dmenu replacement - fork with wayland support"
 A,sway-launcher-desktop,"is a TUI Application launcher with Desktop Entry supprt. (its a fancy launcher for fzf)"
 ,waybar,"is a highly customizable Wayland bar for Sway and Wlroots based compositors"
 ,hyprcursor,"is the hyprland cursor format, library and utilities
@@ -72,5 +71,4 @@ A,sway-launcher-desktop,"is a TUI Application launcher with Desktop Entry supprt
 ,cpio,"is a tool to copy files into or out of a cpio or tar archive" # this may be redundent but it also may make hyprland plugins work properly
 ,meson,"is a High productivity build system" # same as cpio. If there is still errors try installing ninja and then reporting to me
 ,ttf-jetbrains-mono-nerd,"is a Patched font JetBrains Mono from nerd fonts library - this is the emoji font for rofi power menu"
-A,wlogout,"is a logout menu for wayland"
 ,chafa,"Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc."
