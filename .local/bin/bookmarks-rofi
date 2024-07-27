@@ -5,9 +5,5 @@
 # the newbookmark script
 # This only supports wayland and wlroots based compositors
 # Written By GunslingerZach. (gunslingerzach.xyz)
-grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1 | wl-copy
-
-case "$(printf "no\nyes" | tofi --prompt-text 'open in browser? ')" in
-	'yes') $BROWSER $(wl-paste) ;;
-	*) exit 1 ;;
-esac
+grep -v '^#' ~/.local/share/larbs/snippets | rofi -dmenu -i -l 50 | cut -d' ' -f1 | wl-copy
+$BROWSER $(wl-paste)

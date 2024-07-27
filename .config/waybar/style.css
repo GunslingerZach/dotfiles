@@ -27,32 +27,32 @@
 }
 
 window#waybar {
-  background-color: @bg;
+  background-color: #285577;
   color: @text;
   opacity: 1;
 }
-
-/*window#waybar.empty {
+window#waybar.empty {
     background-color: transparent;
-}*/
+}
+window#waybar.solo {
+    background-color: #285577;
+}
 #workspaces {
   background-color: transparent;
 }
 
 #workspaces button {
-  background-color: @bg;
-  padding: 0 5px;
+/*  background-color: @bg; */
+  padding: 0 0;
 	color: @text;
 }
-
 #workspaces button.active {
   background-color: #285577;
-  color: @invText;
-  /* color: @background; */
+/*  color: @invText;
+  color: @background; */
 }
-
-#workspaces button.focused { 
-	padding: 0px 11px 0px 11px; 
+#workspaces button.focused {
+	padding: 0px 0px 0px 0px;
 	background-color: #285577;
 	color: #ffffff;
 }
@@ -60,7 +60,7 @@ window#waybar {
     background: #285577;
 }
  #taskbar button {
-    background: @bg;
+    background: transparent;
 }
 #pulseaudio,
 #cpu,
@@ -69,25 +69,31 @@ window#waybar {
 #battery,
 #clock,
 #tray,
+#disk {
+  background-color: transparent;
+  color: @text;
+  margin: 0px;
+}
 #custom-icon {
   background-color: transparent;
   color: @text;
   margin: 0px;
 }
-
-
 .modules-left {
   background-color: @bg;
   padding: 0px 0px 0px 0px;
 }
-
 #window {
-  color: @invText;
-  background-color: transparent;
-  padding-left: 4px;
+  /*color: @invText; */
+  background-color: #285577;
+  /*padding-left: 4px;*/
 }
-
 .modules-right {
-  background-color: transparent;
+  background-color: @bg;
+  color: @text;
+  padding: 0px 0px 0px 0px;
+}
+.modules-center {
+  background-color: @bg;
   padding: 0px 0px 0px 0px;
 }

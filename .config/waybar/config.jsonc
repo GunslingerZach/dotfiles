@@ -2,8 +2,8 @@
     "spacing": 4,
 		// try to keep it 4px across the config
 		"height":25,
-    "modules-left": ["hyprland/workspaces", "river/tags", "sway/workspaces", "sway/mode", "custom/icon",  "hyprland/window", "sway/window"],
-    "modules-right": ["custom/weather", "custom/pacpackages", "bluetooth", "cpu", "memory", "disk", "battery", "network", "pulseaudio", "privacy", "temperature", "clock", "custom/pacpackages", "custom/uptime", "tray"],
+    "modules-left": ["hyprland/workspaces", "river/tags", "sway/workspaces", "custom/icon", "sway/mode", "sway/scratchpad", "hyprland/window", "sway/window"],
+    "modules-right": ["custom/newsboat", "custom/pacpackages", "bluetooth", "cpu", "memory", "disk", "battery", "pulseaudio", "privacy", "temperature", "clock", "custom/uptime", "tray"],
 
 		/*
 		MODULES
@@ -12,24 +12,25 @@
 			"format": "[]="
 		},
     "tray": {
-        "spacing": 0
+        "spacing": 0,
+        "format": "{} |"
     },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "] [🗓️ {:%a %b %d %Y] [🕛️ %r}]",
+        "format": "| 🗓️ {:%a %b %d %Y | 🕛️ %r} |",
         "format-alt": "[{:%Y-%m-%d}]",
 	"interval": 1
-    },/*
+    },
            "wlr/taskbar": {
-                "format": "",
+                "format": "{icon}",
                 "icon-size": 14,
                 "icon-theme": "Numix-Circle",
                 "tooltip-format": "{title}",
                 "on-click": "activate",
                 "on-click-middle": "close",
                 "ignore-list": [
-                    "Alacritty"
+                    "Alacritty", "foot"
                 ],
                 "app_ids-mapping": {
                      "firefoxdeveloperedition": "firefox-developer-edition"
@@ -38,63 +39,64 @@
                      "Firefox Web Browser": "Firefox",
                      "Foot Server": "Terminal"
                 }
-           }, */
+           },
 
     "disk": {
 	      "interval":30,
-	      "format": "[📁{used}/{total} {percentage_used}% {free} available]"
+	      "format": "| 📁{specific_used:0.2f} TB/{specific_total:0.2f} TB {percentage_used}% {free} available",
+          "unit": "TB"
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "{}"
     },
     "cpu": {
-        "format": "[:{usage}% {load}]",
+        "format": "| :{usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "[🧠:{used:0.1f}G/{total:0.1f}G {percentage}%]"
+        "format": "| 🧠:{used:0.1f}G/{total:0.1f}G" // {percentage}%
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        "format-critical": "[🌡️!!{temperatureC}°C!!]",
-        "format": "[🌡️{temperatureC}°C]"
+        "format-critical": "| 🌡️!!{temperatureC}°C!!",
+        "format": "| 🌡️{temperatureC}°C"
     },
 	"battery": {
         	"states": {
             		"warning": 30,
             		"critical": 15
         	},
-        	"format": "[🔋 {capacity}%]",
-        	"format-charging": "[🔌{capacity}%]",
-        	"format-plugged": "[{capacity}%]",
-        	"format-alt": "{time} {icon}",
-        	"format-full": "[🔌 {capacity}%]",
+        	"format": "| 🔋 {capacity}%",
+        	"format-charging": "| 🔌{capacity}%",
+        	"format-plugged": "| {capacity}%",
+        	"format-alt": "| {time} {icon}",
+        	"format-full": "| 🔌 {capacity}%",
         	"format-icons": ["", "", ""]
 	},
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "[🔈️:{volume}%",
-        "format-muted": "[🔇:",
+        "format": "| 🔈️:{volume}%",
+        "format-muted": "| 🔇:",
         "on-click": "pavucontrol"
     },
   "custom/weather": {
     "exec": "~/.config/waybar/wittr.sh",
     "return-type": "json",
-    "format": "[{}]",
+    "format": "{}",
     "tooltip": true,
     "interval": 900
     },
   "custom/newsboat": {
-    "exec": "~/.local/bin/statusbar/sb-news2",
-    "format": "[{}]",
+    "exec": "~/.local/bin/statusbar/sb-news",
+    "format": "{}",
     "tooltip": true,
     "interval": 900
   },
   "custom/pacpackages": {
-    "exec": "~/.local/bin/statusbar/sb-pacpackages",
-    "format": "[{}]",
+    "exec": "~/.local/bin/statusbar/packages-sway",
+    "format": "| 📦{}",
     "tooltip": true,
     "interval": 900
   },
@@ -110,8 +112,6 @@
     "tooltip": true,
     "interval": 900
   },
-
-
 
            "bluetooth": {
                 // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
@@ -155,12 +155,29 @@
                      }
                 ]
            },
+           "sway/scratchpad": {
+                "format": "{icon} {count}",
+                "show-empty": false,
+                "format-icons": ["", ""],
+                "tooltip": true,
+                "tooltip-format": "{app}: {title}"
+           },
+"sway/window": {
+    "format": "{}",
+    "icon": true,
+    //"max-length": 50,
+    "rewrite": {
+            "Mozilla Firefox": "Firefox",
+            "Foot Server": "Terminal"
+    }
+}
+},
     "network": {
-        "format-wifi": "[ {essid} ({signalStrength}%) ]",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "|  {essid} ({signalStrength}%)",
+        "format-ethernet": "| {ipaddr}/{cidr} ",
+        "tooltip-format": "| {ifname} via {gwaddr} ",
+        "format-linked": "| {ifname} (No IP) ",
+        "format-disconnected": "|  Wifi disabled",
+        "on-click": "wifi-toggle-no-dmenu"
     }
 }

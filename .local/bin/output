@@ -1,0 +1,5 @@
+if [[ $(~/.local/bin/statusbar/sb-pacpackages-no-emoji) ]]; then
+    echo "$(~/.local/bin/statusbar/sb-pacpackages-no-emoji)"
+else
+    echo "no packages"
+fi

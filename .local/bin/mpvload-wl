@@ -1,4 +1,4 @@
 #!/bin/sh
 
 notify-send -t 3000 "Playing Video" "$(wl-paste)";
-mpv --ytdl-format=22 "$(wl-paste)" &
+mpv "$(wl-paste)" &
