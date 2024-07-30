@@ -56,7 +56,7 @@ G,https://github.com/lukesmithxyz/dwm.git,"is the window manager."
 ,socat,"is a utility which establishes two byte streams and transfers data between them."
 ,moreutils,"is a collection of useful unix tools."
 #GunslingerZach's addictions
-A,tofi,"is a wayland native application launcher (I use it for dmenu)"
+# A,tofi,"is a wayland native application launcher (I use it for dmenu)"
 ,fastfetch,"is another rewrite of neofetch. I use it because it can replicate both neofetch and pfetch"
 ,foot,"is a fast, lightweight, and minimalistic Wayland terminal emulator"
 ,waybar,"is a highly customizable Wayland bar for Sway and Wlroots based compositors"
