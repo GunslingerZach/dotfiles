@@ -60,14 +60,21 @@ hyprpm enable hyprsplit
 
 ## known bugs
 
-the script will error out when installing yay. The only solution I have found is to manually install it then run the script.
+the script will error out when installing an aur helper. To fix this I removed all of the aur packages. you can install the extra packages by installing an aur helper and then using that to install those packages. Because the aur is by definition chaotic and not supported by parabola, I try to keep aur packages to a minimum
+
+to insttall the aur helper run
 
 ```
 cd ~/.local/src/
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/paru.git
 makepkg -si
 ```
+then run
 
-note that you cannot install yay as root so you have to install it as a user. Make sure that your user is in the sudoers file (/etc/sudoers)
+```
+paru -S tofi
+```
+
+note that you cannot install paru as root so you have to install it as a user. Make sure that your user is in the sudoers file (/etc/sudoers)
 
 Hyprland headers will fail sometimes. This is because the aur package for hyprland doesn't install all of the nessisary packages. I have added some in the [progs.csv](progs.csv) file. If you are still getting an error then report it.
