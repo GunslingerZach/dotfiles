@@ -1,16 +1,15 @@
 # Luke's config for the Zoomer Shell
 pfetch
-ls --color=auto --group-directories-first
-cd() {
-  if [ -n "$1" ]; then
-#     builtin cd "$@" && ls -hN --color=auto --group-directories-first
-    builtin cd "$@" && ls --color=auto --group-directories-first
-  else
-#     builtin cd ~ && ls -hN --color=auto --group-directories-first
-    builtin cd ~ && ls --color=auto --group-directories-first
-  fi
-}
+#ls -1 -d  */ --color=auto
+#cd() {
+#  if [ -n "$1" ]; then
+#    builtin cd "$@" && ls -1 -d */ --color=auto
+#  else
+#    builtin cd ~ && ls -1 -d */ --color=auto
+#  fi
+#}
 export QT_QPA_PLATFORMTHEM=qt5ct
+export MANPAGER="nvim +Man!"
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -22,7 +21,6 @@ setopt interactive_comments
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
-setopt inc_append_history
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
@@ -77,7 +75,11 @@ bindkey -s '^o' '^ulfcd\n'
 
 bindkey -s '^a' '^ubc -lq\n'
 
-bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+# bindkey -s '^d' '^ucd "$(dirname "$(fzf)")"\n'
+
+bindkey -s '^f' '^ucd $(ls -a -D -1 | fzf)\n'
+
+bindkey -s '^r' '^uripdrag $(ls -1 $(pwd) | fzf)\n'
 
 bindkey '^[[P' delete-char
 
@@ -90,5 +92,6 @@ bindkey -M visual '^[[P' vi-delete
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+export PATH="$HOME/.config/emacs/bin:$PATH"
 alias websync="rsync -rtvzP ~/documents/hugo/gunslingerzach/public/ root@gunslingerzach.xyz:/var/www/gunslingerzach/"
 alias nb="newsboat"

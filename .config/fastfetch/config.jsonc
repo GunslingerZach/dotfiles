@@ -5,12 +5,13 @@
         "color": {"2": "blue"}
     },
     "display": {
-        "binaryPrefix": "si",
+        "size": {
+            "binaryPrefix": "si"
+        },
         "color": "blue"
     },
     "modules": [
         "title",
-        "separator",
         "os",
         "host",
         "kernel",
@@ -19,8 +20,8 @@
         "memory",
         "disk",
         "battery",
-        "poweradapter",
+        "poweradapter"
 //        "break"
-//        "colors",
+//        "colors"
     ]
 }
