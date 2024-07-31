@@ -8,6 +8,7 @@
 
 dotfilesrepo="https://github.com/GunslingerZach/dotfiles"
 progsfile="https://raw.githubusercontent.com/GunslingerZach/dotfiles/master/progs.csv"
+aurhelper="paru"
 repobranch="master"
 export TERM=ansi
 
