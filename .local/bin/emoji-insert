@@ -1,0 +1,17 @@
+#!/bin/sh
+# this is essentually a remastering/improvment of luke smith's bookmarking script.
+# this script gives you a list of bookmarked files. When one is selected, it will open the
+# browser with that selection. basically a better bookmarking script. integrates well with
+# the newbookmark script
+# This only supports wayland and wlroots based compositors
+# Written By GunslingerZach. (gunslingerzach.xyz)
+grep -v '^#' ~/.local/share/larbs/emoji | dmenu -i -l 50 | cut -d' ' -f1 | wl-copy
+if [[ $(wl-paste) = $(cat /dev/null) ]]; then
+    echo "nothing"
+else
+    notify-send -t 3000 "copied "$(wl-paste)" to clipboard"
+    case "$(printf "yes\nno" | tofi --prompt-text 'open in browser? ')" in
+	    'yes') $BROWSER $(wl-paste) ;;
+	    *) exit 1 ;;
+    esac
+fi

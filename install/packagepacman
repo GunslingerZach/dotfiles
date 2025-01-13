@@ -1,0 +1,77 @@
+# make sure to put the hashtag above the program
+# fonts
+ttf-font-awesome
+ttf-dejavu
+libertinus-font 
+noto-fonts 
+noto-fonts-emoji 
+ttf-jetbrains-mono-nerd # is a Patched font JetBrains Mono from nerd fonts library - this is the emoji font for rofi power menu
+# keyring
+polkit
+gnome-keyring
+# applications
+sway
+neovim 
+mpv 
+man-db # lets you read man pages of programs."
+ncmpcpp # a ncurses interface for music with multiple formats and a powerful tag editor
+newsboat 
+yt-dlp 
+zathura # pdf viewer with vim-like bindings."
+zathura-pdf-mupdf # allows mupdf pdf compatibility in zathura."
+imv 
+fastfetch 
+foot 
+waybar 
+lf
+# dependencies
+dunst # is a suckless notification system."
+mpd # is a lightweight music daemon."
+mpc # is a terminal interface for mpd."
+wireplumber # is the audio system."
+pipewire-pulse # gives pipewire compatibility with PulseAudio programs."
+pulsemixer # is an audio controller."
+unzip # unzips zips."
+poppler # manipulates .pdfs and gives .pdf previews and other .pdf functions."
+mediainfo # shows audio and video information and is used in the file browser."
+atool # manages and gives information about archives."
+fzf # is a fuzzy finder tool used for easy selection and location of files."
+bat # can highlight code output and display files and is used to generate previews in the file browser."
+moreutils # is a collection of useful unix tools."
+chafa # Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc."
+python-qdarkstyle # provides a dark Qt theme."
+swaybg # Wallpaper tool for Wayland compositors"
+libnotify # allows desktop notifications."
+ffmpeg # can record and splice video and audio on the command line."
+ffmpegthumbnailer # creates thumbnail previews of video files."
+exa
+autotiling
+emacs
+git
+network-manager-applet
+networkmanager
+grim
+slurp
+swayidle
+swaylock
+swaync
+opendoas
+pqiv
+pulsemixer
+#filesystems
+dosfstools # allows your computer to access dos-like filesystems
+ntfs-3g # allows accessing NTFS partitions."
+exfat-utils # allows management of FAT drives."
+# bloat
+steam
+btop
+firefox
+galculator
+lsix
+lxappearence
+nemo 
+nwg-look
+jq
+python-qt-material
+syncthing
+
