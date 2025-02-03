@@ -12,8 +12,7 @@ timestamp=$(date +%s)
 larbs_dotfiles_remote=https://github.com/lukesmithxyz/voidrice
 zach_dotfiles_remote=https://github.com/gunslingerzach/dotfiles
 packages=same as above
-## supported distros are arch and artix-runit. If you are using parabola
-## then just choose what is equivilant (arch if systemd artix-runit if runit)
+## supported distros are arch and artix-runit for now.
 distro=artix-runit
 ## this is used to simplify the script whenever possible.
 like=arch
