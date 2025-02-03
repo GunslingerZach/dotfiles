@@ -73,9 +73,11 @@ if [ $like=arch ]; then
  # installs the packages from the main repo
  if [ $distro=artix-runit ]; then
   pacman -S --noconfirm --needed -S artix-keyring artix-archlinux-support
+  mv -f $home/.config/dotfiles/artix/pacman.conf /etc/
   pacman -Sy --noconfirm
   pacman-key --populate archlinux
  fi
+ [ $distro!=artix-runit ] && mv -f $home/.config/dotfiles/arch/pacman.conf /etc/
  pacman -Syu --noconfirm
  pacman --noconfirm --needed -S $(cat packagepacman | cut -d' ' -f1 | sed '/#/d')
 
