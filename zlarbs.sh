@@ -6,16 +6,17 @@
 
 # usefull alias
 home=/home/$USER
+timestamp=$(date +%s)
 
 # variables
 larbs_dotfiles_remote=https://github.com/lukesmithxyz/voidrice
 zach_dotfiles_remote=https://github.com/gunslingerzach/dotfiles
 packages=same as above
-## supported distros are arch, artix-runit, and debian with devuan support comming
+## supported distros are arch and artix-runit. If you are using parabola
+## then just choose what is equivilant (arch if systemd artix-runit if runit)
 distro=artix-runit
 ## this is used to simplify the script whenever possible.
 like=arch
-
 
 # setup the dotfiles config
 mkdir -p $home/.config/dotfiles
@@ -39,12 +40,13 @@ for zlarbs_config in alacritty doom fastfetch foot lf nvim sway waybar shell zsh
 done
 
 # .zprofile needs to be in two places at once
-ln -s "$home/.config/shell/profile" "$home/.zprofile"
+###! WARNING - THIS WILL REPLACE YOUR .zprofile if there is already one there !###
+ln -sf "$home/.config/shell/profile" "$home/.zprofile"
 
 # handles .local/bin
 test -d $home/.local/bin || mkdir -p "$home/.local/bin"
-ln -s "$larbs/.local/bin/*" "$home/.local/bin/"
-ln -s "$zlarbs/.local/bin/*" "$home/.local/bin/"
+ln -f "$larbs/.local/bin/*" "$home/.local/bin/"
+ln -f "$zlarbs/.local/bin/*" "$home/.local/bin/"
 
 # handles the applications directoryin a way that more
 # can be added without git wiping it out
@@ -52,10 +54,10 @@ test -d $home/.local/share/applications || mkdir -p "$home/.local/share/applicat
 ln -s "$zlarbs/.local/share/applications/*" "$home/.local/share/applications/"
 
 # handles the .local/share folder
-ln -s "$larbs/.local/share/larbs" "$home/.local/share/"
-ln -s "$zlarbs/.local/share/zlarbs" "$home/.local/share/"
-ln -s "$larbs/.local/share/thiemeyer_road_to_samarkand.jpg" "$home/.local/share/"
-ln -s "$zlarbs/.local/share/0123.jpg" "$home/.local/share/"
+ln -f "$larbs/.local/share/larbs" "$home/.local/share/"
+ln -f "$zlarbs/.local/share/zlarbs" "$home/.local/share/"
+ln "$larbs/.local/share/thiemeyer_road_to_samarkand.jpg" "$home/.local/share/"
+ln "$zlarbs/.local/share/0123.jpg" "$home/.local/share/"
 
 # distro specific
 if [ $like=arch ]; then
@@ -65,13 +67,17 @@ if [ $like=arch ]; then
  cd .local/src/paru
  makepkg -si
 
- # installs the packages from the main repo
- pacman -S $(cat packagepacman | cut -d' ' -f1 | sed '/#/d')
- # installs the packages from the aur
- # paru -S $(cat aur | cut -d' ' -f1 | sed '/#/d')
-
  ###! VERY IMPORTANT - THE FOLLOWING IS RUN AS ROOT !###
  su root
+
+ # installs the packages from the main repo
+ if [ $distro=artix-runit ]; then
+  pacman -S --noconfirm --needed -S artix-keyring artix-archlinux-support
+  pacman -Sy --noconfirm
+  pacman-key --populate archlinux
+ fi
+ pacman -Syu --noconfirm
+ pacman --noconfirm --needed -S $(cat packagepacman | cut -d' ' -f1 | sed '/#/d')
 
  # Make pacman colorful, concurrent downloads and Pacman eye-candy.
  grep -q "ILoveCandy" /etc/pacman.conf || sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
@@ -79,20 +85,18 @@ if [ $like=arch ]; then
 
  # Use all cores for compilation.
  sed -i "s/-j2/-j$(nproc)/;/^#MAKEFLAGS/s/^#//" /etc/makepkg.conf
+ if [ $distro=artix-runit ]; then
+  # dbus UUID must be generated for Artix runit.
+  dbus-uuidgen >/var/lib/dbus/machine-id
+  # Use system notifications for Brave on Artix
+  echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
+ fi
  exit
 fi
 
 # Most important command! Get rid of the beep!
 # rmmod pcspkr
 # echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf
-
-# dbus UUID must be generated for Artix runit.
-if [ $distro=artix-runit ]; then
- echo -e "${BBLUE}" "dbus UUID must be generated for Artix runit."
- dbus-uuidgen >/var/lib/dbus/machine-id
- # Use system notifications for Brave on Artix
- echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
-fi
 
 # Make zsh the default shell for the user.
 [ $SHELL != /bin/zsh ] chsh -s /bin/zsh "$USER"
