@@ -1,2 +1,0 @@
-notify-send -t 3000 "adding bookmark" "$(wl-paste)";
-wl-paste >> ~/.local/share/larbs/snippets

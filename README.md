@@ -50,3 +50,11 @@ git clone [https://github.com/salman-abedin/eyelust](https://github.com/salman-a
 ## todo 
 - offline install
 - replace lf with dired in emacs
+
+# tips
+This is in Luke Smith's config however it isn't universally usefull so I will leave it as a optional post install thing
+
+## Use system notifications for Brave on Artix
+echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
+## setup abook
+sudo -u "$name" mkdir -p "/home/$USER/.config/abook/"
