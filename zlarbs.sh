@@ -11,7 +11,6 @@ timestamp=$(date +%s)
 # variables
 larbs_dotfiles_remote=https://github.com/lukesmithxyz/voidrice
 zach_dotfiles_remote=https://github.com/gunslingerzach/dotfiles
-packages=same as above
 ## supported distros are arch and artix-runit for now.
 distro=artix-runit
 ## this is used to simplify the script whenever possible.
@@ -78,7 +77,7 @@ if [ $like=arch ]; then
  fi
  [ $distro!=artix-runit ] && mv -f $home/.config/dotfiles/arch/pacman.conf /etc/
  pacman -Syu --noconfirm
- pacman --noconfirm --needed -S $(cat packagepacman | cut -d' ' -f1 | sed '/#/d')
+ pacman --noconfirm --needed -S $(cat arch/packages | cut -d' ' -f1 | sed '/#/d')
 
  # Make pacman colorful, concurrent downloads and Pacman eye-candy.
  grep -q "ILoveCandy" /etc/pacman.conf || sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf

@@ -11,7 +11,7 @@ This is a wip fork of [LARBS](https://larbs.xyz) to suit my usecase
  - zsh (shell)
  - lf (terminal file manager)
 	- mpd/ncmpcpp (music)
-	- nsxiv (image/gif viewer)
+	- pqiv (image/gif viewer)
 	- mpv (video player)
 - Very useful scripts are in `~/.local/bin/`
 - I try to minimize what's directly in `~` so:
