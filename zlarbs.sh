@@ -92,6 +92,10 @@ if [ $like=arch ]; then
   # Use system notifications for Brave on Artix
   echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
  fi
+ # configure doas
+ mv $home/.config/dotfiles/doas.conf /etc/
+ chown -c root:root /etc/doas.conf
+ chmod -c 0400 /etc/doas.conf
  exit
 fi
 
