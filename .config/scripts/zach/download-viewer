@@ -1,0 +1,2 @@
+#!/bin/sh
+eza $XDG_DOWNLOAD_DIR -f $HOME/downloads | fzf --height=100% | xargs -I{} xdg-open ~/downloads/{}

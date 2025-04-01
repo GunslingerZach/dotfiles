@@ -1,0 +1,274 @@
+# ____ __ ____ _ _  _
+#(_-< V  V / _` | || |
+#/__/\_/\_/\__,_|\_, |
+#                |__/
+
+# must be first so it instantly plays
+
+# exec mpvpaper DP-3 -o --loop-file=inf -o --aid=no ~/downloads/black-sun.mp4
+# output HDMI1 pos 0 0 res 1920x1080
+# output eDP1 pos 1920 0 res 1600x900
+# font pango:monospace 0
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+floating_modifier $mod normal
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term foot
+set $menu $term fzf-run
+# set $menu exec $(tofi-run)
+# hide titlebars unless they are nessisary
+hide_edge_borders --i3 smart_no_gaps
+default_border pixel 4
+titlebar_padding 1 1
+
+gaps inner 10
+smart_gaps on
+
+# keyboard config
+input "type:keyboard" xkb_options caps:swapescape
+input "type:keyboard" repeat_rate 75
+
+workspace 10 output HDMI-A-1
+
+# make certain apps floating
+for_window [app_id="galculator"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Pqiv"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [app_id="imv"] border normal
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [class="Psi"] floating enable
+for_window [class="Pidgin"] floating enable
+
+# stolen from the gentoo wiki (see https://wiki.gentoo.org/wiki/Sway)
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+# librewolf
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [title = "About Librewolf"] floating enable
+for_window [app_id="librewolf" title="Library"] floating enable, border pixel 1, sticky enable
+# opacity
+set $opacity 0.8
+for_window [app_id="org.pwmt.zathura"] opacity $opacity
+for_window [app_id="org.qbittorrent.qBittorrent"] opacity 0.95
+for_window [app_id="nemo"] opacity 0.95
+# for_window [app_id="librewolf"] floating enable
+
+# execute at startup/reload
+exec waybar -c $HOME/.config/sway/waybar/config.jsonc -s $HOME/.config/sway/waybar/style.css
+exec_always emacs -daemon
+exec foot --server
+exec mpd
+exec swaync
+exec pipewire
+exec pipewire-pulse
+exec wireplumber
+exec syncthing --no-browser
+# exec steam -silent
+exec gnome-keyring-daemon
+# for windows 7 nostalgia/preservation
+# exec pkill -SIGUSR1 waybar & gtk-launch windows-7.desktop
+
+# keybinds
+# bindsym Mod4+f1 exec sh transparency.sh
+# bindsym Mod4+f2 exec sh transparency-95.sh
+bindsym Mod4+f3 exec wifi-toggle
+bindsym Mod4+f4 exec outputswap
+bindsym Mod4+Shift+f4 exec $term -a 'flying-foot' pulsemixer
+bindsym Mod4+grave exec foot emoji-insert
+# bindsym Mod4+BackSpace exec wlogout -p layer-shell
+bindsym Mod4+BackSpace exec sysact-sway-tofi
+bindsym Print exec sway-screenshot -m output -- nsxiv
+bindsym Shift+Print exec sway-screenshot -m region -- nsxiv
+bindsym $mod+Print exec sway-screenshot -m window -- nsxiv
+# bindsym Print exec sway-screenshot-tofi
+# bindsym Mod4+Print exec sway-screenshot-tofi
+bindsym Mod4+Insert exec foot bookmarks
+# bindsym Mod4+minus exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym Mod4+f10 exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+# bindsym Mod4+equal exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym Mod4+f11 exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym Mod4+f9 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym Mod4+q kill
+bindsym Mod4+w exec $BROWSER
+bindsym Mod4+Shift+w exec $BROWSER -p
+bindsym Mod4+e exec emacsclient -c
+bindsym Mod4+shift+e exec thunar
+bindsym Mod4+r exec $term lf
+# bindsym Mod4+Shift+r exec sh .config/waybar/relaunch.sh
+bindsym Mod4+Shift+r exec sway-relaunch
+bindsym $mod+t layout tabbed
+bindsym $mod+Shift+t exec sh transparency.sh
+bindsym Mod4+Shift+o exec mpvload-wl
+bindsym Mod4+p exec mpc toggle
+bindsym Mod4+Shift+p exec, mpc pause; pauseallmpv
+bindsym Mod4+Return exec $term
+bindsym Mod4+Shift+Return exec floating $term
+# bindsym Mod4+a exec $term ani-cli -c
+# bindsym Mod4+a exec $term ani-cli -c
+bindsym $mod+s split toggle
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+v floating toggle
+bindsym Mod4+d exec $menu
+# bindsym Mod4+Shift+D exec tofi-drun --drun-launch=true
+bindsym Mod4+Shift+D exec wofi
+bindsym Mod4+f fullscreen, 1
+bindsym Mod4+Shift+f exec $term nohup download-viewer & exit
+# bindsym Mod4+g exec nemo
+bindsym Mod4+g exec gimp
+
+bindsym Mod4+a exec swaymsg "gaps inner current plus 10"
+bindsym Mod4+Shift+a exec swaymsg "gaps inner current minus 10"
+bindsym Mod4+Shift+n exec $term newsboat
+bindsym Mod4+b exec pkill -SIGUSR1 waybar
+bindsym Mod4+Shift+b exec wl-paste >> ~/.config/zlarbs/snippets && notify-send -t 3000 "adding bookmark" "$(wl-paste)";
+bindsym Mod4+n exec swaymsg border toggle
+bindsym Mod4+m exec sh .config/scripts/zach/muselection-tofi
+bindsym Mod4+Shift+m exec emacs --eval="(mu4e)"
+
+# Resize window with control
+bindsym $mod+Control+$left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+$down resize grow height 10 px or 10 ppt
+bindsym $mod+Control+$up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+$right resize grow width 10 px or 10 ppt
+
+# Moving around:
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Workspaces:
+# Switch to workspace
+bindsym $mod+1 workspace number 1; mpv /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+2 workspace number 2; mpv /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+3 workspace number 3; mpv /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+4 workspace number 4; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+5 workspace number 5; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+6 workspace number 6; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+7 workspace number 7; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+8 workspace number 8; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+9 workspace number 9; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+bindsym $mod+0 workspace number 10; mpv --no-video /home/zach/.local/share/sounds/Mint21Sounds/switch_m21.oga
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# change 'indicator' from default to something more obvious
+client.focused            #4c7899 #285577 #ffffff #ff0000 #285577
+# client.focused_inactive   #333333 #5f676a #ffffff #ff0000 #5f676a
+# client.focused_tab_title  #333333 #5f676a #ffffff
+# client.unfocused          #333333 #222222 #888888 #ff0000 #222222
+# client.urgent             #2f343a #900000 #ffffff #ff0000 #900000
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+# output * bg ~/.config/sway/0123.jpg fill
+output * bg ~/.local/share/bg fill
+# monitor config
+output HDMI-A-1 resolution 1920x1080 position -1920,0
+output DP-3 resolution 1920x1080 position 0,0
+output DP-2 resolution 1920x1080 position 1920,0
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+# exec swayidle -w \
+#           timeout 900 'notify-send -u critical -t 600000 move the mouse' \
+#           timeout 1500 'swaylock -f -c 000000' \
+#           timeout 1800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#           before-sleep 'swaylock -f -c 000000'
+# # Resizing containers:
+mode "resize" {
+# left will shrink the containers width
+# right will grow the containers width
+# up will shrink the containers height
+# down will grow the containers height
+bindsym Mod4+$left resize shrink width 10px
+bindsym Mod4+$down resize grow height 10px
+bindsym Mod4+$up resize shrink height 10px
+bindsym Mod4+$right resize grow width 10px
+
+# Ditto, with arrow keys
+bindsym Left resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Mod4+x mode "resize"
+
+include @sysconfdir@/sway/config.d/*

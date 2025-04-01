@@ -1,0 +1,16 @@
+#!/bin/sh
+# this is essentually a remastering/improvment of luke smith's bookmarking script.
+# this script gives you a list of bookmarked files. When one is selected, it will open the
+# browser with that selection. basically a better bookmarking script. integrates well with
+# the newbookmark script
+# This only supports wayland and wlroots based compositors
+# Written By GunslingerZach. (gunslingerzach.xyz)
+
+# cat $HOME/.config/zlarbs/bookmarks/snippets cat $HOME/.config/zlarbs/bookmarks/emoji > /tmp/snip
+selection="$(grep -v '^#' $HOME/.config/zlarbs/snippets | tofi --prompt-text=bookmarks: --horizontal=false --height=100% | cut -d' ' -f1)"
+[[ $selection = "" ]] && exit 1
+if [[ $selection =~ "http" ]]; then
+    xdg-open "$selection"
+else
+    wl-copy "$selection" && notify-send "copied "$selection" to clipboard"
+fi

@@ -1,0 +1,44 @@
+[colors.normal]
+black = '#242424'  # black
+red = '#f62b5a'  # red
+green = '#47b413'  # green
+yellow = '#e3c401'  # yellow
+blue = '#24acd4'  # blue
+magenta = '#f2affd'  # magenta
+cyan = '#13c299'  # cyan
+white = '#e6e6e6'  # white
+
+[colors.bright]
+black = '#616161'   # bright black
+red = '#ff4d51'   # bright red
+green = '#35d450'   # bright green
+yellow = '#e9e836'   # bright yellow
+blue = '#5dc5f8'   # bright blue
+magenta = '#feabf2'   # bright magenta
+cyan = '#24dfc4'   # bright cyan
+white = '#ffffff'   # bright white
+[window]
+opacity = 0.8
+
+[colors.primary]
+background = '#000000'
+foreground = '#d6d6d6'
+
+[font]
+size = 9.0
+
+[font.bold]
+family = "notoSansMono"
+style = "Bold"
+
+[font.bold_italic]
+family = "notoSansMono"
+style = "Bold Italic"
+
+[font.italic]
+family = "notoSansMono"
+style = "Italic"
+
+[font.normal]
+family = "monospace"
+style = "Regular"

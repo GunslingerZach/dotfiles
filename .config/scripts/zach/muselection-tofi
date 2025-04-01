@@ -1,0 +1,6 @@
+#!/bin/sh
+# this is a simple script which plays music from the ~/Music file
+# note this is currently broken as I use the fzf version
+music=$HOME/Music/
+[ pwd != $music ] && cd $music
+eza -f $music | tofi --prompt-text="what song to play?:" --horizontal=false --height=100% | xargs -i{} xdg-open {}

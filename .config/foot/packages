@@ -1,0 +1,2 @@
+alacritty (the program), noto-fonts, noto-fonts-emoji (the fonts)
+arch/artix: pacman -S alacritty noto-fonts noto-fonts-emoji

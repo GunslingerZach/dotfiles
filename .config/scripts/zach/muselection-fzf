@@ -1,0 +1,5 @@
+#!/bin/sh
+# this is a simple script which plays music from the ~/Music file
+music=$HOME/Music/
+[ pwd != $music ] && cd $music
+nohup eza -f $music | fzf | xargs -i{} xdg-open {}

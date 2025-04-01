@@ -1,0 +1,99 @@
+@define-color accent #383838;
+@define-color text #f8f8f8;
+@define-color invText #f8f8f8;
+/* text when background is accent */
+@define-color bg #181818;
+
+
+/* @import "./wal.css";
+@define-color accent @color5;
+@define-color bg @background;
+@define-color text @foreground; */
+
+@import "./base16/base16-default-dark.css";
+
+@define-color accent @base01;
+@define-color text @base07;
+@define-color invText @base07;
+/* text when background is accent */
+@define-color bg @base00;
+
+* {
+  font-family: monospace;
+  font-size: 12px;
+  border-radius: 0px;
+  /* :[ */
+  min-height: 0px;
+}
+window#waybar {
+  background-color: #285577;
+  color: @text;
+  opacity: 1;
+}
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #285577;
+}
+#workspaces {
+  background-color: transparent;
+}
+
+#workspaces button {
+/*  background-color: @bg; */
+  padding: 0 0;
+	color: @text;
+}
+#workspaces button.active {
+  background-color: #285577;
+/*  color: @invText;
+  color: @background; */
+}
+#workspaces button.focused {
+	padding: 0px 0px 0px 0px;
+	background-color: #285577;
+	color: #ffffff;
+}
+ #taskbar button.active {
+    background: #285577;
+}
+ #taskbar button {
+    background: transparent;
+}
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock,
+#tray,
+#disk {
+  background-color: transparent;
+  color: @text;
+  margin: 0px;
+}
+#custom-icon {
+  background-color: transparent;
+  color: @text;
+  margin: 0px;
+}
+.modules-left {
+  background-color: @bg;
+  padding: 0px 0px 0px 0px;
+}
+#window {
+  /*color: @invText; */
+  background-color: #285577;
+  /*padding-left: 4px;*/
+}
+.modules-right {
+  background-color: @bg;
+  color: @text;
+  padding: 0px 0px 0px 0px;
+}
+/*.modules-center {
+  background-color: @bg;
+  padding: 0px 0px 0px 0px;
+}*/
+
