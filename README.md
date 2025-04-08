@@ -3,21 +3,21 @@
 # My dotfies (GunslingerZach) <https://gunslingerzach.xyz>'s dotfiles)
 This is a wip fork of [LARBS](https://larbs.xyz) to suit my usecase. I also copied from [horriblename](https://github.com/horriblename/lfimg-sixel)'s github to use sixel instead of lf
 ## software used
- - swaywm (window manager)
-  - waybar
- - foot (terminal)
-  - alacritty (alternitive terminal)
+ - swaywm (wayland only)
+ - waybar (wayland only)
+ - foot (terminal) (wayland only)
+ - alacritty (alternitive terminal)
  - vim/nvim (terminal text editor)
  - emacs (gui text editor configured to work like vim)
  - zsh (shell)
  - lf (terminal file manager)
-	- pqiv (image/gif viewer)
-	- mpv (video player)
+ - nsxiv (image/gif viewer)
+ - mpv (video player)
 - Very useful scripts are in `~/.config/scripts/`
 - I try to minimize what's directly in `~` so:
 	- All configs that can be in `~/.config/` are.
-    - Further, all configs in this repo are in `~/.config/` with .zshenv being the only exception for zsh
-	- Some environmental variables have been set in `~/.zprofile` to move configs into `~/.config/`
+    - Further, all configs in this repo are in `~/.config/` with `.zshenv` being the only exception for zsh
+	- Some environmental variables have been set in `~/.config/zsh/.zprofile` to move configs into `~/.config/`
 ## install
 backup your dotfiles
 ~~~
