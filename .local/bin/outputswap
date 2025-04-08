@@ -1,0 +1,19 @@
+#!/bin/sh
+# if you are not me then this script will need to find out what outputs you are using
+# and replace them here
+headphones="alsa_output.pci-0000_0c_00.6.analog-stereo"
+speaker="alsa_output.pci-0000_03_00.1.hdmi-stereo-extra1"
+currentsink=$(pactl info | sed -n 's/Default Sink: //p')
+
+# figure out which output is in use and use the opposite
+[ "$speaker" = "$currentsink" ] && newsink="$headphones" || newsink="$speaker"
+# apply the opposite
+pactl set-default-sink "$newsink"
+# send a notification
+[ $newsink = $headphones ] && notify-send -t 3000 "swapped to headphones" || notify-send -t 3000 "swapped to speakers"
+# this I stole, I have no idea how it works but it works
+pactl list short sink-inputs|while read stream; do
+    streamId=$(echo $stream|cut '-d ' -f1)
+    echo "moving stream $streamId"
+    pactl move-sink-input "$streamId" "$newsink"
+done

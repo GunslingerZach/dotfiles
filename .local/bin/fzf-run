@@ -1,0 +1,2 @@
+#!/bin/sh
+compgen -c | fzf --height=100% --preview='man {1}' | ( nohup > /dev/null sh & exit )
