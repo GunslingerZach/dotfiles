@@ -38,16 +38,17 @@ window#waybar {
     transition-duration: .5s;
 }*/
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #ffffff;
     transition-property: background-color;
 }
 window#waybar.empty {
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.4);
     border-bottom: transparent;
 }
 window#waybar.solo {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #000000;
     border-bottom: transparent;
 }
 window#waybar.foot {
@@ -70,6 +71,10 @@ window#waybar.mpv {
 }
 window#waybar.steamwebhelper {
     background-color: #171D25;
+    border: none;
+}
+window#waybar.nemo {
+    background-color: #3D3D3E;
     border: none;
 }
 /* #workspaces button { */

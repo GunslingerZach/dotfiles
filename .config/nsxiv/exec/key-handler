@@ -31,7 +31,7 @@ rotate() {
 }
 case "$1" in
 "c")      while read file; do wl-copy < "$file" ; done ;;
-"w")      while read file; do setbg-sway "$file"; done ;;
+"w")      while read file; do setbg "$file"; done ;;
 "C-e")      while read file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 -q -pa pr '$file' | less" & done ;;
 "g")      tr '\n' '\0' | xargs -0 gimp & ;;
 # "C-r")      while read file; do rawtherapee "$file" & done ;;

@@ -1,7 +1,7 @@
 # my dotfiles
 
 # My dotfies (GunslingerZach) <https://gunslingerzach.xyz>'s dotfiles)
-This is a wip fork of [LARBS](https://larbs.xyz) to suit my usecase
+This is a wip fork of [LARBS](https://larbs.xyz) to suit my usecase. I also copied from [horriblename](https://github.com/horriblename/lfimg-sixel)'s github to use sixel instead of lf
 ## software used
  - swaywm (window manager)
   - waybar

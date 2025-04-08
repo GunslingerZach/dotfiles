@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-killall waybar
-swaymsg reload
-waybar -c $HOME/.config/sway/waybar/config.jsonc -s $HOME/.config/sway/waybar/style.css & disown

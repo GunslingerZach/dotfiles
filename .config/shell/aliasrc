@@ -8,8 +8,8 @@
 [ -f "$MBSYNCRC" ] && alias mbsync='mbsync -c $MBSYNCRC'
 
 se() {
-	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
-	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
+	choice="$(find ~/.config/scripts -mindepth 1 -printf '%P\n' | fzf)"
+	[ -f "$HOME/.config/scripts/$choice" ] && $EDITOR "$HOME/.config/scripts/$choice"
 	}
 
 # Verbosity and settings that you pretty much just always are going to want.
@@ -57,13 +57,15 @@ alias \
   sudo="doas" \
   sudoedit="doasedit" \
   waybar="waybar -c $HOME/.config/sway/waybar/config.jsonc -s $HOME/.config/sway/waybar/style.css" \
-  bat="bat --color always" \
-  cat="bat --color always" \
+  bat="bat --color always --plain" \
+  cat="bat --color always --plain" \
   neofetch="fastfetch -c $HOME/.config/fastfetch/neofetch.jsonc" \
   pfetch="fastfetch" \
   websync="rsync -rtvzP ~/documents/hugo/gunslingerzach/public/ gunslingerzach.xyz:/var/www/gunslingerzach/" \
   nb="newsboat" \
-  wallpaper="nsxiv -t ~/pictures/wallpapers/*"
+  wallpaper="nsxiv -t ~/pictures/wallpapers/*" \
+  downview='eza $XDG_DOWNLOAD_DIR -f $HOME/downloads | fzf --height=100% | xargs -I{} xdg-open ~/downloads/{}' \
+  fe='nvim $(fzf --preview="bat --plain --color=always {}")'
   # swayhide (only if you are running sway)
 if [ $ZACH_DESKTOP="sway" ]; then 
     alias \

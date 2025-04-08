@@ -83,7 +83,7 @@ for_window [app_id="librewolf" title="Library"] floating enable, border pixel 1,
 set $opacity 0.8
 for_window [app_id="org.pwmt.zathura"] opacity $opacity
 for_window [app_id="org.qbittorrent.qBittorrent"] opacity 0.95
-for_window [app_id="nemo"] opacity 0.95
+# for_window [app_id="nemo"] opacity 0.95
 # for_window [app_id="librewolf"] floating enable
 
 # execute at startup/reload
@@ -109,8 +109,9 @@ bindsym Mod4+f4 exec outputswap
 bindsym Mod4+Shift+f4 exec $term -a 'flying-foot' pulsemixer
 bindsym Mod4+grave exec foot emoji-insert
 # bindsym Mod4+BackSpace exec wlogout -p layer-shell
-bindsym Mod4+BackSpace exec sysact-sway-tofi
-bindsym Print exec sway-screenshot -m output -- nsxiv
+bindsym Mod4+BackSpace exec foot sysact-fzf
+bindsym Print exec grim -o DP-3
+# bindsym Print exec sway-screenshot -m output -- nsxiv
 bindsym Shift+Print exec sway-screenshot -m region -- nsxiv
 bindsym $mod+Print exec sway-screenshot -m window -- nsxiv
 # bindsym Print exec sway-screenshot-tofi
@@ -126,16 +127,15 @@ bindsym Mod4+w exec $BROWSER
 bindsym Mod4+Shift+w exec $BROWSER -p
 bindsym Mod4+e exec emacsclient -c
 bindsym Mod4+shift+e exec thunar
-bindsym Mod4+r exec $term lf
+bindsym Mod4+r exec $term lfrun
 # bindsym Mod4+Shift+r exec sh .config/waybar/relaunch.sh
 bindsym Mod4+Shift+r exec sway-relaunch
 bindsym $mod+t layout tabbed
 bindsym $mod+Shift+t exec sh transparency.sh
-bindsym Mod4+Shift+o exec mpvload-wl
+bindsym Mod4+Shift+o exec 'notify-send -t 3000 "Playing Video" "$(wl-paste)" && mpv "$(wl-paste)" &'
 bindsym Mod4+p exec mpc toggle
 bindsym Mod4+Shift+p exec, mpc pause; pauseallmpv
 bindsym Mod4+Return exec $term
-bindsym Mod4+Shift+Return exec floating $term
 # bindsym Mod4+a exec $term ani-cli -c
 # bindsym Mod4+a exec $term ani-cli -c
 bindsym $mod+s split toggle

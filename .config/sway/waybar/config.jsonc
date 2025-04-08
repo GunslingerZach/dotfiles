@@ -3,7 +3,7 @@
 		// try to keep it 4px across the config
 		"height":25,
     "modules-left": ["sway/workspaces", "custom/icon", "sway/mode", "sway/scratchpad", "sway/window", "sway/mode"],
-    "modules-right": ["battery", "pulseaudio", "privacy", "network", "clock", "tray"],
+    "modules-right": ["custom/sb-forecast", "custom/sb-moonphase", "pulseaudio", "privacy", "network", "clock", "battery", "tray"],
 
 		/*
 		MODULES
@@ -11,15 +11,12 @@
 		"custom/icon": {
 			"format": "[]="
 		},
-		"custom/fix": {
-			"format": "  "
-		},
     "tray": {
         "spacing": 0,
         "format": "{} |"
     },
     "network": {
-        "format-wifi": " 📶 {signalStrength}%",
+        "format-wifi": " 📶{signalStrength}%",
         "format-ethernet": " {ipaddr}/{cidr} ",
         "tooltip-format": " {ifname} via {gwaddr} ",
         "format-linked": " {ifname} (No IP) ",
@@ -29,28 +26,9 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " 🗓️ {:%a %b %d %Y 🕛️ %r} ",
+        "format": " 🗓️{:%a %b %d %r %Y} ",
 	"interval": 1
     },
-           "wlr/taskbar": {
-                "format": "{icon}",
-                "icon-size": 14,
-                "icon-theme": "Numix-Circle",
-                "tooltip-format": "{title}",
-                "on-click": "activate",
-                "on-click-middle": "close",
-                "ignore-list": [
-                    "Alacritty", "foot"
-                ],
-                "app_ids-mapping": {
-                     "firefoxdeveloperedition": "firefox-developer-edition"
-                },
-                "rewrite": {
-                     "Firefox Web Browser": "Firefox",
-                     "Foot Server": "Terminal"
-                }
-           },
-
     "disk": {
 	      "interval":30,
 	      "format": "| 📁{specific_used:0.2f} TB/{specific_total:0.2f} TB {percentage_used}% {free} available",
@@ -87,7 +65,7 @@
 	},
     "pulseaudio": {
         // "scroll-step": 5, // %, can be a float
-        "format": " {icon} {volume}%",
+        "format": " {icon}{volume}%",
         "format-muted": " 🔇:",
         "format-icons": {
             "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
@@ -121,9 +99,21 @@
     "tooltip": true,
     "interval": 900
   },
+  "custom/sb-forecast": {
+    "exec": "sb-forecast",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 900
+  },
+  "custom/sb-moonphase": {
+    "exec": "sb-moonphase",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 900
+  },
     "custom/uptime": {
-    "exec": "~/.local/bin/upt",
-    "format": "[uptime: {}]",
+    "exec": "uptime -p",
+    "format": "🖥️{}",
     "tooltip": true,
     "interval": 60
   },
@@ -133,27 +123,6 @@
     "tooltip": true,
     "interval": 900
   },
-
-           "bluetooth": {
-                // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-                "format": "<U+F294> {status}",
-                "format-disabled": "", // an empty format will hide the module
-                "format-connected": "<U+F294> {num_connections} connected",
-                "tooltip-format": "{controller_alias}\t{controller_address}",
-                "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-                "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-           },
-
-           "bluetooth": {
-                "format": "<U+F294> {status}",
-                "format-connected": "<U+F294> {device_alias}",
-                "format-connected-battery": "<U+F294> {device_alias} {device_battery_percentage}%",
-                // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-                "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-                "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-                "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-                "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-           },
            "privacy": {
                 "icon-spacing": 4,
                 "icon-size": 18,

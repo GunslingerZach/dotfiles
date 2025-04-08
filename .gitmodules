@@ -1,0 +1,6 @@
+[submodule ".local/bin/luke-scripts"]
+	path = .local/bin/luke-scripts
+	url = https://github.com/gunslingerzach/luke-scripts
+[submodule ".local/bin/scripts"]
+	path = .local/bin/scripts
+	url = https://github.com/gunslingerzach/scripts

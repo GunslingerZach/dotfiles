@@ -1,3 +1,0 @@
-#!/bin/sh
-img=$(nsxiv -to ~/pictures/wallpappers/ | awk -F'/' '{print $NF}')
-setbg $img

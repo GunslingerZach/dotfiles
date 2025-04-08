@@ -8,29 +8,24 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)
-(package! jabber)
+;; dired
 (package! dired-open)
 (package! all-the-icons-dired)
 (package! dired-hide-dotfiles)
 (package! dired-preview)
 (package! image-dired)
-(package! multi-vterm)
-(package! wttrin)
-(package! nyan-mode)
-(package! zone-nyan)
-(package! ducpel)
-(package! centered-window)
-;; (package! writeroom-mode)
-(package! flymd)
-(package! etc-sudoers-mode)
-(package! keepass-mode)
-(package! figlet)
-(package! ebuku)
 ;; elfeed packages
 (package! elfeed-dashboard)
 (package! elfeed-tube)
 (package! elfeed-tube-mpv)
 (package! undo-tree)
+;; uncatorized
+(package! jabber)
+(package! nyan-mode)
+;;(package! zone-nyan)
+(package! centered-window)
+(package! etc-sudoers-mode)
+(package! figlet)
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/radian-software/straight.el#the-recipe-format

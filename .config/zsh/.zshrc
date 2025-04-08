@@ -65,15 +65,9 @@ lfcd () {
     fi
 }
 bindkey -s '^o' '^ulfcd\n'
-
 bindkey -s '^a' '^ubc -lq\n'
-
-bindkey -s '^f' '^ucd $(eza -D | fzf) && ls\n'
-
-# bindkey -s '^x' '^ueza -f | fzf | xargs -I{} xdg-open {}\n'
-
+bindkey -s '^x' '^ueza -f | fzf | xargs -I{} xdg-open {}\n'
 bindkey -s '^r' '^ueza -f | fzf | xargs -I{} ripdrag {}\n'
-
 bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:
